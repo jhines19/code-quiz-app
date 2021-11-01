@@ -4,43 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz App</title>
-    <link rel="stylesheet" type= "text/css" href="/assets/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Javascript Quiz Game</title>
+<!-- design wireframe mockups in notebook -->
+
 </head>
-
+<header>
+    Javascript Programming Language Quiz
+</header>
 <body>
-    <header>
-        <div class="start-game-container">
-            <h1>Coding Quiz Challenge</h1>
-                <p>Try to answer as many questions as possible. At the end you will have the opportunity to enter in your name as a highscore!</p>
-            <button class="start-button">Start Game</button>
+
+    <section class="question_panel">
+        <div class="question">
+            <p class="selector" id="question_text"></p>
         </div>
-    </header>
+
+        <div class="answers">
+            <button type="button" class="selector" id="button0"></button>
+            <button type="button" class="selector" id="button1"></button>
+            <button type="button" class="selector" id="button2"></button>
+            <button type="button" class="selector" id="button3"></button>
+        </div>
         
-    <section>
-        <div class="question text view" >
-            <div class= "large-font questions"></div>
-            <ol>
-                <li></li>
-            </ol>
-        </div>
+        <button type="button" id="start_button"></button>
+    </section>
 
-        <div class="answers list view">
-            <div></div>
-        </div>
-
-        <div class="correct-incorrect message">
-            <div></div>
+     
+    <section class="side_panel">
+        <div>
+            <p id="timer"></p>
         </div>
     </section>
 
-    <section>
-        <h1 class="time" style="text-align:center;"></h1>
-
+    <section class="side_panel">
+            <p id="highscores"><a href="./highscores.html">View Hall of Fame</a></p>
     </section>
 
-    <script src="assets/js/script.js"></script>
+
+<script src="./script.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,20 @@
+body{
+
+}
+
+.question_panel{
+    height: 100px;
+    width: 100%;
+    background-color: #bfbfbf;
+    border: 2px solid;
+    border-radius: 15px;
+}
+
+.side_panel{
+    height: 100px;
+    width: 100px;
+    background-color: #bfbfbf;
+    border: 2px solid;
+    border-radius: 15px;
+}
+
