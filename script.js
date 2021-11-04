@@ -26,34 +26,40 @@ var content = [
     },
 ]
 
-var startButtonEl = document.querySelector("#start_button")
-startButtonEl.textContent = "Start the Quiz"
+var index = 0
 
-var questionTextEl = document.querySelector("#question_text")
-console.log(questionTextEl)
+var questionsTextEl = document.querySelector("#question_text");
+questionsTextEl = content[index].question;
+//this is what controls the question text area display right now
+document.getElementById("question_text").innerHTML = content[index].question
 
+//button0
 var button0El = document.querySelector("#button0")
+button0El = content[index].options[0];
+document.getElementById("button0").innerHTML = content[index].options[0]
+//button1
 var button1El = document.querySelector("#button1")
+button1El = content[index].options[1];
+document.getElementById("button1").innerHTML = content[index].options[1]
+//button2
 var button2El = document.querySelector("#button2")
+button2El = content[index].options[2];
+document.getElementById("button2").innerHTML = content[index].options[2]
+//button3
 var button3El = document.querySelector("#button3")
-
-               //-------------------part 1 finished^-------------------//
-
-               //-------------------part 2 start-------------------//
-               //trying to add clicking event listeners to each buttonEl
-               //timer system
-               //point system
-               //
+button3El = content[index].options[3];
+document.getElementById("button3").innerHTML = content[index].options[3]
 
 
-//timer system
-// function: start button function
-// every time start button is clicked start timer
-var timeLeft = 45;
+var correctEl = content[index].correct;
 var keepScore = 0;
 
 
+var timeLeft = 45;
 function startQuiz() {
+
+    var startButtonEl = document.querySelector("#start_button")
+    startButtonEl.textContent = "Start the Timer and begin!"
 
     startButtonEl.addEventListener('click', function () {
         var timerEl = document.querySelector('#timer');
@@ -74,87 +80,37 @@ function startQuiz() {
         }
         setTimer()
 
-        //on start, display first question and options from content
-        questionTextEl.textContent = content[0].question
-        button0El.textContent = content[0].options[0]
-        button1El.textContent = content[0].options[1]
-        button2El.textContent = content[0].options[2]
-        button3El.textContent = content[0].options[3]
+        var nextButtonEl = document.querySelector("#next_button");
+        nextButtonEl.textContent = "Next Question"
 
-        document.querySelectorAll('.selector').forEach(item => {
-            item.addEventListener('click', event => {
-                if (event.target.textContent==content[0].correct) {
-                    alert("Correct! You get +10 points 🙂")
-                    keepScore += 10
-                    
-                } else {
-                    alert("Wrong answer! Lose 5 seconds on the clock 😬")
-                    timeLeft -= 5
-                    
-                }
-            })
+        nextButtonEl.addEventListener('click', event => {
+            index++
+            document.getElementById("question_text").innerHTML = content[index].question
+            document.getElementById("button0").innerHTML = content[index].options[0]
+            document.getElementById("button1").innerHTML = content[index].options[1]
+            document.getElementById("button2").innerHTML = content[index].options[2]
+            document.getElementById("button3").innerHTML = content[index].options[3]
+            //high-score page
         })
-    })
-}
 
+    })
+
+
+}
 startQuiz()
 
 
-//point system
 
+document.querySelectorAll('.selector').forEach(item => {
+    item.addEventListener('click', event => {
 
+        if (correctEl) {
+            alert("Correct! You get +10 points 🙂")
+            keepScore += 10
 
-
-//go through every index of the array and:
-
-//display the question and the options
-//when an option is clicked, compare it to the answer property
-//do quiz conditional logic
-
-
-
-
-
-
-
-
-
-
-//   button1El.addEventListener('click', function (){
-//     questionTextEl.textContent = content[2].question
-//     button0El.textContent = content[2].options[0]
-//     button1El.textContent = content[2].options[1]
-//     button2El.textContent = content[2].options[2]
-//     button3El.textContent = content[2].options[3]
-//     })
-  
-
-            // button0El.addEventListener("click", function(){
-            //     questionTextEl++
-            //     button0El++
-            //     button1El++
-            //     button2El++
-            //     button3El++
-            // })
-
-            // button1El.addEventListener("click", function(){
-            //     questionTextEl++
-            //     button0El++
-            //     button1El++
-            //     button2El++
-            //     button3El++
-            // })
-            // button2El.addEventListener("click", function(){
-            //     questionTextEl++
-            //     button0El++
-            //     button1El++
-            //     button2El++
-            //     button3El++
-            // })
-            // button3El.addEventListener("click", function(){
-            //     questionTextEl++
-            //     button0El++
-            //     button1El++
-            //     button2El++
-            //     button3El++
-            // })
+        } else {
+            alert("Wrong answer! Lose 5 seconds on the clock 😬")
+            timeLeft -= 5
+        }
+    })
+})
