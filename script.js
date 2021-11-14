@@ -114,3 +114,11 @@ document.querySelectorAll('.selector').forEach(item => {
         }
     })
 })
+
+//localStorage
+
+submitAnswer.addEventListener("click", function(){
+    localStorage.setItem("keepScore", JSON.stringify(keepScore))
+})
+
+var storeScores = JSON.parse(localStorage.getItem("keepScore"))
